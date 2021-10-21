@@ -1,9 +1,8 @@
 //* sfn - Space Fill Name
 // The CDC assembly code of COMCSFN can be found at:
 //   http://s3data.computerhistory.org/chess/chess.sourcecode.102645430.pdf
-//   20200627, PHM: downloaded from page 17
+//   2020-06-27, PHM: downloaded from page 17
 #include <iostream>
-using std::cout;
 
 typedef uint64_t TWord;
 static constexpr TWord mask80 = 0x8080808080808080;
@@ -21,7 +20,7 @@ TWord sfn (const TWord name) {
 // -------------------------------------------------------------- test
 void test (const TWord name) {
   const TWord fild = sfn( name);
-  cout << "sfn(" << std::hex << name << ") -> " << fild << "\n";
+  std::cout << "sfn(" << std::hex << name << ") -> " << fild << "\n";
 }
 // ============================================================== main
 int main () {

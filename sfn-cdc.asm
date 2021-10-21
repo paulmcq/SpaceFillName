@@ -1,0 +1,39 @@
+* 20200627, PHM: downloaded from page 17, COMCSFN, of
+*   http://s3data.computerhistory.org/chess/chess.sourcecode.102645430.pdf
+
+***     SFN - SPACE FILL NAME.
+*       G. R. MANSFIELD. 12/08/69.
+*       ADAPTED FROM ROUTINE DEVELOPED AT PURDUE UNIVERSITY.
+*       REVISED - 03/27/74. C. G. FILSTEAD.
+SFN     SPACE 4
+***     SFN APPENDS SPACE CODES (55) TO A WORD.
+*
+*       ENTRY   (X1) = NAME LEFT JUSTIFIED, ZERO FILL.
+*               (B1) = 1.
+*
+*       EXIT    (X6) = NAME SPACE FILLED.
+*
+*       USES    A2, X2.
+*
+*       CALLS   NONE.
+*
+
+SFN    EQ       *+1S17 ENTRY/EXIT
+       SA2      =40404040404040404040B
+
+* EXAMPLE: LET X1 =     0102 0304 0500 0000 0000
+
+        MX6     -1
+	IX6     X1+X6   0102 0304 0477 7777 7777
+
+	BX6     -X6+X1  7777 7777 7700 0000 0000
+	BX2     -X6*X2  0000 0000 0040 4040 4040
+	BX6     X2
+	LX6     -3      0000 0000 0004 0404 0404
+
+	BX2     X2+X6   0000 0000 0044 4444 4444
+	BX6     X1+X2   0102 0304 0544 4444 4444
+	LX2     -2      0000 0000 0011 1111 1111
+	BX6     X6+X2   0102 0304 0555 5555 5555
+
+	EQ      SFN      RETURN
